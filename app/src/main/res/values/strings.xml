@@ -3,7 +3,5 @@
     <string name="app_name">Political Preparedness</string>
     <string name="upcoming_elections">Upcoming Elections</string>
     <string name="saved_elections">Saved Elections</string>
-
-    <!-- TODO: Add necessary string values -->
-
+    <string name="see_representatives">See Representatives</string>
 </resources>
