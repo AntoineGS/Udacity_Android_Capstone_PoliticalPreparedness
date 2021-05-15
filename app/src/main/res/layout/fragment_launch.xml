@@ -10,10 +10,6 @@
 
         <!-- TODO: Add image for home screen logo. -->
 
-        <!-- TODO: Add Button to navigate to upcoming elections. -->
-
-        <!-- TODO: Add Button to navigate to representatives. -->
-
         <Button
             android:id="@+id/representativeButton"
             android:layout_width="0dp"
