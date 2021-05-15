@@ -12,8 +12,10 @@
 
     <!-- TODO: Add motion scene to hide form on vertical scroll. -->
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:layout_height="match_parent"
+        android:id="@+id/motion_layout"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="false"
         app:layoutDescription="@xml/fragment_representative_scene">
 
         <!-- TODO: Add visual styling and content -->
@@ -21,6 +23,7 @@
             android:id="@+id/search_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/search_representatives"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,9 +32,9 @@
             android:id="@+id/address_line_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/address_line1"
             android:inputType="textPostalAddress"
             android:text="@{viewModel.address.line1}"
-            android:hint="@string/address_line1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_title" />
 
@@ -40,9 +43,9 @@
             android:id="@+id/address_line_2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:hint="@string/address_line2"
             android:inputType="textPostalAddress"
             android:text="@{viewModel.address.line2}"
-            android:hint="@string/address_line2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_1" />
 
@@ -51,36 +54,36 @@
             android:id="@+id/city"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="@string/city"
             android:inputType="textPostalAddress"
             android:text="@{viewModel.address.city}"
-            android:hint="@string/city"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/state"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_2" />
 
         <!-- TODO: Add visual styling and content -->
         <Spinner
             android:id="@+id/state"
+            stateValue="@{viewModel.address.state}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:inputType="textPostalAddress"
-            stateValue="@{viewModel.address.state}"
-            app:layout_constraintStart_toEndOf="@id/city"
+            app:layout_constraintBottom_toBottomOf="@id/city"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/city"
-            app:layout_constraintBottom_toBottomOf="@id/city"/>
+            app:layout_constraintStart_toEndOf="@id/city"
+            app:layout_constraintTop_toTopOf="@id/city" />
 
         <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/zip"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="@string/zipcode"
             android:inputType="number"
             android:maxLength="5"
             android:text="@{viewModel.address.zip}"
-            android:hint="@string/zipcode"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/city"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/city" />
 
         <!-- TODO: Add visual styling and label -->
@@ -104,11 +107,11 @@
             android:id="@+id/representative_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/search_representatives"
+            android:text="@string/results"
             android:visibility="invisible"
-            tools:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_location" />
+            app:layout_constraintTop_toBottomOf="@id/button_location"
+            tools:visibility="visible" />
 
 
         <!-- TODO: Add visual styling and content -->
@@ -117,6 +120,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
+            android:nestedScrollingEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
