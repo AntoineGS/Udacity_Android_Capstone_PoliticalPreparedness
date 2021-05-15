@@ -4,4 +4,8 @@
     <string name="upcoming_elections">Upcoming Elections</string>
     <string name="saved_elections">Saved Elections</string>
     <string name="see_representatives">See Representatives</string>
+    <string name="save_election">Save Election</string>
+    <string name="delete_election">Delete Election</string>
+    <string name="election_saved">Election Saved</string>
+    <string name="election_deleted">Election Deleted</string>
 </resources>
