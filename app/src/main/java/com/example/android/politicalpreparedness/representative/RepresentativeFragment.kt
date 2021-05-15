@@ -102,11 +102,13 @@ class DetailFragment : Fragment() {
             )
 
             viewModel.onSearchRepresentativesByAddress(address)
+            showResultsTitle()
         }
 
         binding.buttonLocation.setOnClickListener {
             if (checkLocationPermissions()) {
                 getLocation()
+                showResultsTitle()
             }
         }
 
@@ -189,6 +191,10 @@ class DetailFragment : Fragment() {
     private fun hideKeyboard() {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+    }
+
+    private fun showResultsTitle() {
+        binding.representativeTitle.visibility = View.VISIBLE
     }
 
 }

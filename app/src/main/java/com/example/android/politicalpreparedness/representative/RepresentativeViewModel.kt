@@ -47,13 +47,11 @@ class RepresentativeViewModel: ViewModel() {
                 } catch (ex: Exception) {
                     _showSnackBar.value = true
                     _representatives.value = ArrayList()
-
                 }
             }
         } else {
             _representatives.value = ArrayList()
         }
-
     }
 
     fun snackBarShown(){

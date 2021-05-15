@@ -106,7 +106,7 @@ class RepresentativeViewHolder(val binding: ItemRepresentativeBinding): Recycler
     }
 
     private fun disableLink(view: ImageView) {
-        view.visibility = View.INVISIBLE
+        view.visibility = View.GONE
     }
 
     private fun setIntent(url: String) {
@@ -114,5 +114,4 @@ class RepresentativeViewHolder(val binding: ItemRepresentativeBinding): Recycler
         val intent = Intent(ACTION_VIEW, uri)
         itemView.context.startActivity(intent)
     }
-
 }
