@@ -8,6 +8,6 @@ import java.util.*
 @BindingAdapter("formattedDate")
 fun dateToString(textView: TextView, date: Date?) {
     if (date != null) {
-        textView.text = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US).format(date)
+        textView.text = SimpleDateFormat("EEE MMM dd yyyy", Locale.US).format(date)
     }
 }

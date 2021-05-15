@@ -15,23 +15,24 @@
 
         <TextView
             android:id="@+id/item_election_name"
+            style="@style/sub_title_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
             android:layout_weight="1"
             android:text="@{election.name}"
             tools:text="Election" />
 
         <TextView
             android:id="@+id/textView2"
+            formattedDate="@{election.electionDay}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
+            android:layout_marginBottom="@dimen/default_padding"
             android:layout_weight="1"
-            android:text="@{election.electionDay.toString()}"
-            tools:text="2021-05-12" />
+            tools:text="Sun Jun 06 2021" />
     </LinearLayout>
 </layout>

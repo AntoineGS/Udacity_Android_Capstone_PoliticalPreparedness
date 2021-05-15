@@ -33,19 +33,32 @@ class VoterInfoFragment : Fragment() {
         binding.viewModel = viewModel
 
         viewModel.voterInfoBallotInfo.observe(viewLifecycleOwner, { ballotInfo ->
-            binding.stateBallot.isInvisible = ballotInfo == null
+            if (ballotInfo == null) {
+                binding.stateBallot.visibility = View.GONE
+            } else {
+                binding.stateBallot.visibility = View.VISIBLE
+            }
         })
 
         viewModel.voterInfoAddress.observe(viewLifecycleOwner, { address ->
-            binding.addressGroup.isInvisible = address == null
+            if (address == null) {
+                binding.addressGroup.visibility = View.GONE
+            } else {
+                binding.addressGroup.visibility = View.VISIBLE
+            }
         })
 
         viewModel.votingLocations.observe(viewLifecycleOwner, { votingLocations ->
-            binding.stateLocations.isInvisible = votingLocations == null
+            if (votingLocations == null) {
+                binding.stateLocations.visibility = View.GONE
+            } else {
+                binding.stateLocations.visibility = View.VISIBLE
+            }
         })
 
         binding.stateBallot.setOnClickListener {
             val url = viewModel.voterInfoBallotInfo.value
+
             if (url != null) {
                 loadUrlIntent(url)
             }
@@ -53,6 +66,7 @@ class VoterInfoFragment : Fragment() {
 
         binding.stateLocations.setOnClickListener {
             val url = viewModel.votingLocations.value
+
             if (url != null) {
                 loadUrlIntent(url)
             }

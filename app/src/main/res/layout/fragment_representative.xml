@@ -15,19 +15,20 @@
         android:id="@+id/motion_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/default_padding"
+        android:layout_marginEnd="@dimen/default_padding"
         android:nestedScrollingEnabled="false"
         app:layoutDescription="@xml/fragment_representative_scene">
 
-        <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/search_title"
+            style="@style/title_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search_representatives"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/address_line_1"
             android:layout_width="match_parent"
@@ -38,7 +39,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_title" />
 
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/address_line_2"
             android:layout_width="match_parent"
@@ -49,7 +49,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_1" />
 
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/city"
             android:layout_width="0dp"
@@ -61,7 +60,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_2" />
 
-        <!-- TODO: Add visual styling and content -->
         <Spinner
             android:id="@+id/state"
             stateValue="@{viewModel.address.state}"
@@ -73,7 +71,6 @@
             app:layout_constraintStart_toEndOf="@id/city"
             app:layout_constraintTop_toTopOf="@id/city" />
 
-        <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/zip"
             android:layout_width="0dp"
@@ -86,35 +83,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/city" />
 
-        <!-- TODO: Add visual styling and label -->
         <Button
             android:id="@+id/button_search"
+            style="@style/button_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/search"
             app:layout_constraintTop_toBottomOf="@id/zip" />
 
-        <!-- TODO: Add visual styling and content -->
         <Button
             android:id="@+id/button_location"
+            style="@style/button_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/use_location"
             app:layout_constraintTop_toBottomOf="@id/button_search" />
 
-        <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/representative_title"
+            style="@style/title_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@string/results"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_location"
             tools:visibility="visible" />
 
-
-        <!-- TODO: Add visual styling and content -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/representatives_recycler"
             android:layout_width="0dp"

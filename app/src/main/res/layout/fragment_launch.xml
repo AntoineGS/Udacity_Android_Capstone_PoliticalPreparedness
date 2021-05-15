@@ -8,10 +8,9 @@
         android:layout_height="match_parent"
         tools:context="com.example.android.politicalpreparedness.MainActivity">
 
-        <!-- TODO: Add image for home screen logo. -->
-
         <Button
             android:id="@+id/representativeButton"
+            style="@style/button_style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/see_representatives"
@@ -21,11 +20,23 @@
 
         <Button
             android:id="@+id/upcomingButton"
+            style="@style/button_style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="@string/upcoming_elections"
             app:layout_constraintBottom_toTopOf="@+id/representativeButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/upcomingButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ballot_logo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
