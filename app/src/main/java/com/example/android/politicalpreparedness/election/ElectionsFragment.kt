@@ -67,7 +67,7 @@ class ElectionsFragment: Fragment() {
             if (election != null) {
                 this.findNavController().navigate(
                     ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(
-                        election.id, election.division
+                        election, election.division
                     )
                 )
                 electionsViewModel.electionIsCompleted()
