@@ -48,19 +48,23 @@ class VoterInfoViewModel(
             _selectedElection.value = election
             val voterInfoAddress = division.state + ", " + division.country
 
-            val voterInfoResponse =
-                CivicsApi.retrofitService.getVoterInfo(voterInfoAddress, election.id)
+            try {
+                val voterInfoResponse =
+                    CivicsApi.retrofitService.getVoterInfo(voterInfoAddress, election.id)
 
-            voterInfoResponse.state?.let { state ->
-                if (state.isNotEmpty()) {
-                    val electionAdministrationBody = state[0].electionAdministrationBody
+                voterInfoResponse.state?.let { state ->
+                    if (state.isNotEmpty()) {
+                        val electionAdministrationBody = state[0].electionAdministrationBody
 
-                    electionAdministrationBody.let {
-                        _votingLocations.value = it.votingLocationFinderUrl
-                        _voterInfoBallotInfo.value = it.ballotInfoUrl
-                        _voterInfoAddress.value = it.correspondenceAddress?.toFormattedString()
+                        electionAdministrationBody.let {
+                            _votingLocations.value = it.votingLocationFinderUrl
+                            _voterInfoBallotInfo.value = it.ballotInfoUrl
+                            _voterInfoAddress.value = it.correspondenceAddress?.toFormattedString()
+                        }
                     }
                 }
+            } catch (e: Exception) {
+                // ignore the error, we assume there's nothing good to show
             }
         }
     }

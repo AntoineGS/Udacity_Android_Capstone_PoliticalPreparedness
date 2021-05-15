@@ -31,14 +31,18 @@
             android:id="@+id/saved_elections_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/saved_elections" />
+            android:text="@string/saved_elections"
+            android:visibility="invisible"
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/saved_elections_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             tools:itemCount="3"
-            tools:listitem="@layout/item_election" />
+            tools:listitem="@layout/item_election"
+            tools:visibility="visible" />
 
     </LinearLayout>
 

@@ -15,7 +15,8 @@ import com.example.android.politicalpreparedness.election.adapter.ElectionListen
 
 class ElectionsFragment: Fragment() {
 
-    private lateinit var electionsViewModel: ElectionsViewModel
+    private lateinit var viewModel: ElectionsViewModel
+    private lateinit var binding: FragmentElectionBinding
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -25,19 +26,19 @@ class ElectionsFragment: Fragment() {
         val database = ElectionDatabase.getInstance(application).electionDao
         val viewModelFactory = ElectionsViewModelFactory(application, database)
 
-        electionsViewModel =
+        viewModel =
             ViewModelProvider(this, viewModelFactory).get(ElectionsViewModel::class.java)
 
-        val binding = FragmentElectionBinding.inflate(inflater, container, false)
-        binding.viewModel = electionsViewModel
+        binding = FragmentElectionBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
         // Upcoming Elections
         val upcomingElectionListAdapter = ElectionListAdapter(ElectionListener {
-            electionsViewModel.showElectionDetails(it)
+            viewModel.showElectionDetails(it)
         })
 
-        electionsViewModel.upcomingElections.observe(viewLifecycleOwner, { elections ->
+        viewModel.upcomingElections.observe(viewLifecycleOwner, { elections ->
             elections?.let {
                 upcomingElectionListAdapter.submitList(it)
             }
@@ -46,15 +47,19 @@ class ElectionsFragment: Fragment() {
         binding.upcomingElectionsRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.upcomingElectionsRecycler.adapter = upcomingElectionListAdapter
 
-
         // Saved Elections
         val savedElectionListAdapter = ElectionListAdapter(ElectionListener {
-            electionsViewModel.showElectionDetails(it)
+            viewModel.showElectionDetails(it)
         })
 
-        electionsViewModel.savedElections.observe(viewLifecycleOwner, { elections ->
+        viewModel.savedElections.observe(viewLifecycleOwner, { elections ->
             elections?.let {
-                savedElectionListAdapter.submitList(it)
+                if (it.isEmpty()) {
+                    setSavedListVisibility(View.INVISIBLE)
+                } else {
+                    setSavedListVisibility(View.VISIBLE)
+                    savedElectionListAdapter.submitList(it)
+                }
             }
         })
 
@@ -63,20 +68,22 @@ class ElectionsFragment: Fragment() {
 
 
         // General
-        electionsViewModel.navigateToSelectedElection.observe(viewLifecycleOwner, { election ->
+        viewModel.navigateToSelectedElection.observe(viewLifecycleOwner, { election ->
             if (election != null) {
                 this.findNavController().navigate(
                     ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(
                         election, election.division
                     )
                 )
-                electionsViewModel.electionIsCompleted()
+                viewModel.electionIsCompleted()
             }
         })
 
         return binding.root
     }
 
-    //TODO: Refresh adapters when fragment loads
-
+    private fun setSavedListVisibility(visibility: Int) {
+        binding.savedElectionsRecycler.visibility = visibility
+        binding.savedElectionsTitle.visibility = visibility
+    }
 }
