@@ -2,9 +2,6 @@
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--  There seems to be a bug with the motion layout not triggering when using a recycler
-          view. I have already posted on knowledge.udacity.com but have not had an answer yet. -->
-
     <ConstraintSet android:id="@+id/start">
         <Constraint
             android:id="@+id/search_title"
